@@ -1,142 +1,877 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1020">
-<title>DigitalKart — Digital Product Marketplace</title>
-<style>
-:root{--bg:#070b16;--surface:#0e1528;--surface2:#151e35;--text:#f5f7ff;--muted:#9aa6bf;--primary:#6c63ff;--primary2:#8b5cf6;--border:#26314d;--shadow:0 18px 50px rgba(0,0,0,.28)}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:linear-gradient(145deg,#070b16,#10172a 55%,#0a1020);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.app{min-height:100vh}.header{position:sticky;top:0;z-index:20;background:rgba(7,11,22,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}.nav{max-width:1180px;margin:auto;padding:14px 18px;display:flex;align-items:center;gap:14px}.logo{font-size:22px;font-weight:900}.logo span{color:#8b7cff}.search{flex:1;position:relative}.search input{width:100%;background:var(--surface);border:1px solid var(--border);color:#fff;padding:12px 16px 12px 42px;border-radius:13px;outline:none}.search-icon{position:absolute;left:14px;top:10px;font-size:18px;color:var(--muted)}.nav-btn{background:var(--surface2);color:#fff;padding:10px 14px;border-radius:11px;border:1px solid var(--border)}.hero{max-width:1180px;margin:auto;padding:52px 18px 28px}.hero-box{padding:42px;border:1px solid #2a3760;border-radius:24px;background:radial-gradient(circle at 80% 10%,rgba(108,99,255,.25),transparent 35%),linear-gradient(135deg,#111a32,#0c1222);box-shadow:var(--shadow)}.eyebrow{color:#a99fff;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1.2px}h1{font-size:clamp(34px,6vw,62px);line-height:1.02;margin:12px 0;max-width:760px;letter-spacing:-2px}.hero p{color:var(--muted);font-size:17px;max-width:680px;line-height:1.65}.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.primary{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;padding:13px 18px;border-radius:12px;font-weight:800}.secondary{background:transparent;color:#fff;padding:13px 18px;border-radius:12px;border:1px solid var(--border);font-weight:700}.section{max-width:1180px;margin:auto;padding:20px 18px 60px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px}.section-head h2{margin:0;font-size:26px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{padding:9px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--border);color:var(--muted)}.filter.active{background:#27235d;color:#fff;border-color:#5f56d8}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:rgba(14,21,40,.92);border:1px solid var(--border);border-radius:17px;overflow:hidden;transition:.2s;box-shadow:0 10px 30px rgba(0,0,0,.12)}.card:hover{transform:translateY(-3px)}.thumb{height:145px;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,#1c2750,#151a32);overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover}.card-body{padding:15px}.tag{font-size:11px;color:#b9b2ff;background:#282458;border-radius:999px;padding:5px 8px;display:inline-block}.card h3{font-size:16px;margin:10px 0 7px}.card p{color:var(--muted);font-size:13px;line-height:1.45;min-height:38px}.price{font-size:20px;font-weight:900;margin-top:12px}.buy{width:100%;margin-top:12px;padding:10px;border-radius:10px;background:#242d49;color:#fff;font-weight:800}.buy.direct{background:linear-gradient(135deg,#16a34a,#22c55e)}.empty{display:none;text-align:center;color:var(--muted);padding:50px}.footer{border-top:1px solid var(--border);padding:30px 18px;color:var(--muted);text-align:center}.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:50;align-items:center;justify-content:center;padding:18px}.modal{width:min(560px,100%);background:#10182c;border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.modal h2{margin-top:0}.form{display:grid;gap:12px}.form input,.form select,.form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:#0b1222;color:#fff;outline:none}.form textarea{min-height:90px}.row{display:flex;justify-content:flex-end;gap:9px;margin-top:8px}.cart-list{display:grid;gap:10px;max-height:300px;overflow:auto}.cart-item{display:flex;justify-content:space-between;gap:12px;padding:12px;background:#0b1222;border:1px solid var(--border);border-radius:11px}.manage-item{display:grid;grid-template-columns:1fr 110px auto;gap:8px;align-items:center;padding:12px;background:#0b1222;border:1px solid var(--border);border-radius:11px}.manage-item input{width:100%;padding:9px;border-radius:9px;border:1px solid var(--border);background:#10182c;color:#fff}.danger{background:#3a1720;color:#ffb4bd;border:1px solid #6d2938;padding:9px 11px;border-radius:9px;font-weight:800}.small{font-size:12px;color:var(--muted)}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.nav{flex-wrap:wrap}.search{order:3;flex-basis:100%}}@media(max-width:560px){.hero{padding-top:24px}.hero-box{padding:26px 20px}.grid{grid-template-columns:1fr}.nav-btn{padding:9px 10px}h1{letter-spacing:-1px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Social & Chat Hub V4</title>
+    <!-- Google Fonts & Tailwind CSS for modern responsive look -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for high-quality icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Custom scrollbar for chat */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 10px;
+        }
+        
+        /* Themes Definitions */
+        :root {
+            --bg-main: #0f172a; --bg-card: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #6366f1; --accent-hover: #4f46e5; --border: #334155;
+        }
+        .theme-dark {
+            --bg-main: #0f172a; --bg-card: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #6366f1; --accent-hover: #4f46e5; --border: #334155;
+        }
+        .theme-cyberpunk {
+            --bg-main: #0c0014; --bg-card: #1a002c; --text-main: #00ffcc; --text-muted: #ff007f; --accent: #bc00dd; --accent-hover: #e100ff; --border: #ff007f;
+        }
+        .theme-ocean {
+            --bg-main: #0b2545; --bg-card: #134074; --text-main: #eef4f8; --text-muted: #8da9c4; --accent: #00b4d8; --accent-hover: #0077b6; --border: #1e6091;
+        }
+        .theme-light {
+            --bg-main: #f8fafc; --bg-card: #ffffff; --text-main: #0f172a; --text-muted: #64748b; --accent: #2563eb; --accent-hover: #1d4ed8; --border: #e2e8f0;
+        }
+        .theme-glass {
+            --bg-main: #111827; --bg-card: rgba(255, 255, 255, 0.05); --text-main: #ffffff; --text-muted: #9ca3af; --accent: #10b981; --accent-hover: #059669; --border: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+        }
+
+        body { background-color: var(--bg-main); color: var(--text-main); }
+        .app-card { background-color: var(--bg-card); border: 1px solid var(--border); }
+        .text-muted-custom { color: var(--text-muted); }
+        .btn-accent { background-color: var(--accent); color: #fff; }
+        .btn-accent:hover { background-color: var(--accent-hover); }
+        .border-custom { border-color: var(--border); }
+    </style>
 </head>
-<body>
-<div class="app">
-<header class="header"><nav class="nav">
-<div class="logo">Digital<span>Kart</span></div>
-<div class="search"><span class="search-icon">⌕</span><input id="search" placeholder="Search digital products..." oninput="renderProducts()"></div>
-<button class="nav-btn" onclick="openCart()">🛒 Cart <span id="cartCount">0</span></button>
-<button class="nav-btn" onclick="openSeller()">＋ Sell</button>
-<button class="nav-btn" onclick="openManage()">⚙ Manage</button>
-</nav></header>
+<body class="theme-dark min-h-screen flex flex-col justify-between">
 
-<main>
-<section class="hero"><div class="hero-box">
-<div class="eyebrow">Digital marketplace</div>
-<h1>Buy & sell digital products in one place.</h1>
-<p>Templates, notes, ebooks, presets, graphics and other downloadable products — a clean marketplace prototype designed for mobile users.</p>
-<div class="cta"><button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore Products</button><button class="secondary" onclick="openSeller()">Start Selling</button></div>
-</div></section>
+    <!-- ================= AUTH PAGE ================= -->
+    <div id="authPage" class="flex-1 flex items-center justify-center p-4">
+        <div class="app-card w-full max-w-md p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 btn-accent"></div>
+            
+            <!-- Auth Headers -->
+            <div class="text-center mb-8">
+                <i class="fa-solid fa-shield-halved text-5xl mb-3 text-[var(--accent)]"></i>
+                <h1 id="authTitle" class="text-3xl font-bold tracking-tight">Create Account</h1>
+                <p id="authSubtitle" class="text-muted-custom text-sm mt-1">Get started with your secure local hub</p>
+            </div>
 
-<section class="section" id="products">
-<div class="section-head"><h2>Featured Products</h2>
-<div class="filters">
-<button class="filter active" onclick="setCategory('All',this)">All</button>
-<button class="filter" onclick="setCategory('Education',this)">Education</button>
-<button class="filter" onclick="setCategory('Design',this)">Design</button>
-<button class="filter" onclick="setCategory('Business',this)">Business</button>
-<button class="filter" onclick="setCategory('Gaming',this)">Gaming</button>
-</div></div>
-<div class="grid" id="productGrid"></div><div class="empty" id="empty">No products found.</div>
-</section>
-</main>
-<footer class="footer">DigitalKart prototype • Payments are demo-only in this version.</footer>
-</div>
+            <!-- Form -->
+            <form id="authForm" onsubmit="handleAuth(event)" class="space-y-5">
+                <div>
+                    <label class="block text-sm font-medium mb-1.5">Username</label>
+                    <div class="relative">
+                        <i class="fa-user absolute left-3 top-3.5 text-gray-400 text-sm"></i>
+                        <input type="text" id="authUsername" required class="w-full bg-[var(--bg-main)] border border-[var(--border)] rounded-xl py-2.5 pl-10 pr-4 focus:outline-none focus:border-[var(--accent)] text-[var(--text-main)]" placeholder="Enter username">
+                    </div>
+                </div>
 
-<div class="modal-bg" id="sellerModal"><div class="modal">
-<h2>Sell a Digital Product</h2><p class="small">Add your product, set its price and upload the file.</p>
-<div class="form">
-<input id="pName" placeholder="Product name">
-<select id="pCat"><option>Education</option><option>Design</option><option>Business</option><option>Gaming</option></select>
-<input id="pPrice" type="number" min="0" placeholder="Price (₹)">
-<textarea id="pDesc" placeholder="Short product description"></textarea>
-<input id="pImage" type="file" accept="image/png,image/jpeg,image/webp">
-<div class="small">Product image: JPG, PNG or WebP</div>
-<input id="pFile" type="file" accept=".pdf,.zip,.rar,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.png,.jpg,.jpeg,.txt">
-<div class="small">Digital product file buyers should receive.</div>
-<input id="pLink" type="url" placeholder="Flipkart product link (optional)">
-<input id="pEmoji" placeholder="Fallback icon, e.g. 📘" maxlength="3">
-<div class="row"><button class="secondary" onclick="closeModal('sellerModal')">Cancel</button><button class="primary" onclick="addProduct()">Publish Product</button></div>
-</div></div></div>
+                <div>
+                    <label class="block text-sm font-medium mb-1.5">Password</label>
+                    <div class="relative">
+                        <i class="fa-lock absolute left-3 top-3.5 text-gray-400 text-sm"></i>
+                        <input type="password" id="authPassword" required class="w-full bg-[var(--bg-main)] border border-[var(--border)] rounded-xl py-2.5 pl-10 pr-10 focus:outline-none focus:border-[var(--accent)] text-[var(--text-main)]" placeholder="••••••••">
+                        <button type="button" onclick="togglePasswordVisibility('authPassword', this)" class="absolute right-3 top-3 text-gray-400 hover:text-white"><i class="fa-eye"></i></button>
+                    </div>
+                </div>
 
-<div class="modal-bg" id="cartModal"><div class="modal">
-<h2>Your Cart</h2><div class="cart-list" id="cartList"></div>
-<div class="row"><button class="secondary" onclick="closeModal('cartModal')">Close</button><button class="primary" onclick="checkout()">Checkout</button></div>
-</div></div>
+                <!-- Recovery Security Questions (Advanced Feature V4) -->
+                <div id="recoveryField" class="space-y-3">
+                    <label class="block text-sm font-medium mb-0.5">Security Question (For Password Recovery)</label>
+                    <select id="securityQuestion" class="w-full bg-[var(--bg-main)] border border-[var(--border)] rounded-xl py-2.5 px-3 focus:outline-none focus:border-[var(--accent)] text-[var(--text-main)] text-sm">
+                        <option value="pet">What is the name of your first pet?</option>
+                        <option value="city">In what city were you born?</option>
+                        <option value="school">What was the name of your first school?</option>
+                    </select>
+                    <input type="text" id="securityAnswer" class="w-full bg-[var(--bg-main)] border border-[var(--border)] rounded-xl py-2.5 px-4 focus:outline-none focus:border-[var(--accent)] text-[var(--text-main)]" placeholder="Your Answer">
+                </div>
 
-<div class="modal-bg" id="paymentModal"><div class="modal">
-<h2>Secure Checkout</h2><div id="paymentSummary" class="cart-item"></div>
-<div class="form">
-<label class="cart-item"><span>📱 PhonePe</span><input type="radio" name="paymentMethod" value="PhonePe"></label>
-<label class="cart-item"><span>💜 Paytm</span><input type="radio" name="paymentMethod" value="Paytm"></label>
-<label class="cart-item"><span>📲 UPI</span><input type="radio" name="paymentMethod" value="UPI"></label>
-<label class="cart-item"><span>💳 Card</span><input type="radio" name="paymentMethod" value="Card"></label>
-<label class="cart-item"><span>🏦 Net Banking</span><input type="radio" name="paymentMethod" value="Net Banking"></label>
-</div>
-<p class="small">Demo payment screen — no real money is charged.</p>
-<div class="row"><button class="secondary" onclick="closeModal('paymentModal')">Cancel</button><button class="primary" onclick="startPayment()">Pay Now</button></div>
-</div></div>
+                <button type="submit" id="authBtn" class="w-full btn-accent font-semibold py-3 rounded-xl transition duration-200 mt-2 shadow-lg shadow-indigo-500/20">Sign Up</button>
+            </form>
 
-<div class="modal-bg" id="manageModal"><div class="modal">
-<h2>Manage Products</h2><p class="small">Change prices or remove products.</p>
-<div class="cart-list" id="manageList"></div>
-<div class="row"><button class="secondary" onclick="closeModal('manageModal')">Close</button></div>
-</div></div>
+            <!-- Bottom Toggle Navigation -->
+            <div class="mt-6 text-center text-sm">
+                <button id="toggleAuthModeBtn" onclick="toggleAuthMode()" class="text-[var(--accent)] hover:underline font-medium">Already have an account? Login here</button>
+            </div>
+            
+            <div id="forgotPasswordContainer" class="mt-2 text-center text-xs hidden">
+                <button onclick="showForgotPasswordModal()" class="text-muted-custom hover:text-[var(--text-main)] underline">Forgot Password?</button>
+            </div>
+        </div>
+    </div>
 
-<script>
-let products=JSON.parse(localStorage.getItem('digitalkart_products')||'null')||[
-{id:1,name:"NEET Biology Quick Notes",cat:"Education",price:99,icon:"📘",desc:"Compact revision notes for fast practice."},
-{id:2,name:"Creator Thumbnail Pack",cat:"Design",price:149,icon:"🎨",desc:"Ready-to-edit thumbnail concepts for creators."},
-{id:3,name:"Digital Business Starter Kit",cat:"Business",price:199,icon:"💼",desc:"Templates to organize a small online business."},
-{id:4,name:"BGMI Tournament Overlay Pack",cat:"Gaming",price:129,icon:"🎮",desc:"Stream overlays and gaming graphics."}
-];
-let cart=[],category="All";
+    <!-- ================= MAIN APP PAGE (DASHBOARD) ================= -->
+    <div id="appPage" class="hidden flex-1 flex flex-col md:flex-row h-screen max-h-screen overflow-hidden">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 app-card border-r-0 md:border-r border-b md:border-b-0 border-custom flex flex-row md:flex-col justify-between p-4 z-10 shrink-0">
+            <div class="flex md:flex-col items-center md:items-start justify-between md:justify-start w-full gap-4 md:gap-6">
+                <!-- User Profile & Status Header -->
+                <div class="flex items-center gap-3 p-1 md:p-2 w-full border-b border-custom pb-4 hidden md:flex relative group">
+                    <div class="relative cursor-pointer" onclick="triggerDpUpload()">
+                        <img id="userDp" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-[var(--accent)]">
+                        <div class="absolute inset-0 bg-black/50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-camera text-xs text-white"></i>
+                        </div>
+                        <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-[var(--bg-card)] rounded-full"></span>
+                    </div>
+                    <div class="overflow-hidden">
+                        <h4 id="sidebarUsername" class="font-bold truncate text-sm">User</h4>
+                        <p class="text-xs text-green-400 font-medium"><i class="fa-circle text-[8px] mr-1"></i>Secure Online</p>
+                    </div>
+                    <input type="file" id="dpInput" accept="image/*" class="hidden" onchange="uploadDp(event)">
+                </div>
 
-function save(){localStorage.setItem('digitalkart_products',JSON.stringify(products))}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+                <!-- Navigation Links -->
+                <nav class="flex md:flex-col w-full justify-around md:justify-start gap-1 md:gap-2">
+                    <button onclick="switchTab('chat')" id="tabBtn-chat" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium w-full text-left transition text-[var(--accent)] bg-indigo-500/10">
+                        <i class="fa-comments text-lg w-5 text-center"></i><span class="hidden md:inline">Global Chat</span>
+                    </button>
+                    <button onclick="switchTab('files')" id="tabBtn-files" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium w-full text-left transition text-muted-custom hover:bg-gray-500/10">
+                        <i class="fa-cloud-arrow-up text-lg w-5 text-center"></i><span class="hidden md:inline">Cloud Share</span>
+                    </button>
+                    <button onclick="switchTab('settings')" id="tabBtn-settings" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium w-full text-left transition text-muted-custom hover:bg-gray-500/10">
+                        <i class="fa-gear text-lg w-5 text-center"></i><span class="hidden md:inline">Settings</span>
+                    </button>
+                </nav>
+            </div>
 
-function renderProducts(){
-let q=document.getElementById('search').value.toLowerCase();
-let list=products.filter(p=>(category==='All'||p.cat===category)&&(!q||(p.name+' '+p.cat+' '+p.desc).toLowerCase().includes(q)));
-document.getElementById('empty').style.display=list.length?'none':'block';
-document.getElementById('productGrid').innerHTML=list.map(p=>`
-<article class="card">
-<div class="thumb">${p.image?`<img src="${p.image}" alt="${esc(p.name)}">`:p.icon||'📦'}</div>
-<div class="card-body"><span class="tag">${p.cat}</span><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
-<div class="price">₹${Number(p.price).toLocaleString('en-IN')}</div>
-<button class="buy direct" onclick="buyNow(${p.id})">⚡ Buy Now</button>
-<button class="buy" onclick="addCart(${p.id})">🛒 Add to Cart</button>
-${p.fileKey?`<button class="buy" onclick="downloadFile(${p.id})">📥 Download File</button>`:''}
-${p.link?`<button class="buy" onclick="window.open('${String(p.link).replace(/'/g,"\\'")}','_blank')">🛍 Open Flipkart Link</button>`:''}
-</div></article>`).join('');
-}
+            <!-- Logout Bottom Section -->
+            <div class="hidden md:block w-full pt-4 border-t border-custom">
+                <button onclick="logout()" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium w-full text-left text-red-400 hover:bg-red-500/10 transition">
+                    <i class="fa-right-from-bracket text-lg w-5 text-center"></i><span>Lock Portal</span>
+                </button>
+            </div>
+            <!-- Mobile logout item -->
+            <button onclick="logout()" class="md:hidden text-red-400 p-3"><i class="fa-right-from-bracket text-xl"></i></button>
+        </aside>
 
-function setCategory(c,b){category=c;document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts()}
-function addCart(id){let p=products.find(x=>x.id===id);if(p){cart.push(p);document.getElementById('cartCount').textContent=cart.length}}
-function openCart(){document.getElementById('cartList').innerHTML=cart.length?cart.map(p=>`<div class="cart-item"><span>${esc(p.name)}</span><b>₹${p.price}</b></div>`).join(''):'<div class="small">Your cart is empty.</div>';document.getElementById('cartModal').style.display='flex'}
-function buyNow(id){let p=products.find(x=>x.id===id);if(p)openPayment([p])}
-function checkout(){if(!cart.length)return alert('Cart is empty.');openPayment(cart)}
-function openPayment(items){let total=items.reduce((s,p)=>s+Number(p.price),0);document.getElementById('paymentModal').dataset.ids=JSON.stringify(items.map(p=>p.id));document.getElementById('paymentSummary').innerHTML=`<b>${esc(items.map(p=>p.name).join(', '))}</b><div class="small">Total: ₹${total.toLocaleString('en-IN')}</div>`;document.getElementById('paymentModal').style.display='flex'}
-function startPayment(){let method=document.querySelector('input[name="paymentMethod"]:checked');if(!method)return alert('Please select a payment method.');let ids=JSON.parse(document.getElementById('paymentModal').dataset.ids||'[]');let total=ids.reduce((s,id)=>s+Number(products.find(p=>p.id===id)?.price||0),0);alert(`Demo order successful!\\nPayment method: ${method.value}\\nTotal: ₹${total}`);cart=[];document.getElementById('cartCount').textContent=0;closeModal('paymentModal');closeModal('cartModal')}
-function openSeller(){document.getElementById('sellerModal').style.display='flex'}
-function openManage(){document.getElementById('manageList').innerHTML=products.map(p=>`<div class="manage-item"><div><b>${esc(p.name)}</b><div class="small">${p.cat}</div></div><input id="price${p.id}" type="number" value="${p.price}"><div style="display:flex;gap:5px"><button class="primary" onclick="updatePrice(${p.id})">Save</button><button class="danger" onclick="del(${p.id})">Delete</button></div></div>`).join('');document.getElementById('manageModal').style.display='flex'}
-function updatePrice(id){let p=products.find(x=>x.id===id),v=Number(document.getElementById('price'+id).value);if(p&&v>=0){p.price=v;save();renderProducts();openManage()}}
-function del(id){if(confirm('Delete this product?')){products=products.filter(p=>p.id!==id);save();renderProducts();openManage()}}
-function closeModal(id){document.getElementById(id).style.display='none'}
+        <!-- Main Work Area Container -->
+        <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+            
+            <!-- Global App Navbar Status (Advanced Feature V4) -->
+            <header class="app-card border-b border-custom px-6 py-4 flex items-center justify-between shadow-sm shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="md:hidden cursor-pointer" onclick="triggerDpUpload()">
+                        <img id="userDpMobile" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150" alt="Avatar" class="w-8 h-8 rounded-full object-cover">
+                    </div>
+                    <div>
+                        <h2 id="currentTabTitle" class="text-xl font-bold tracking-tight">Global Chat Room</h2>
+                        <p id="currentTabDesc" class="text-xs text-muted-custom">Encrypted browser-to-browser sandbox chat network</p>
+                    </div>
+                </div>
+                
+                <!-- Universal Content Filter Search Bar (Advanced Feature V4) -->
+                <div class="relative max-w-xs w-full hidden sm:block" id="universalSearchContainer">
+                    <i class="fa-search absolute left-3 top-3 text-gray-400 text-sm"></i>
+                    <input type="text" id="universalSearch" oninput="handleUniversalSearch()" class="w-full bg-[var(--bg-main)] border border-[var(--border)] rounded-xl py-1.5 pl-9 pr-4 text-xs focus:outline-none focus:border-[var(--accent)] text-[var(--text-main)]" placeholder="Search chat or files...">
+                </div>
+            </header>
 
-function addProduct(){
-let name=document.getElementById('pName').value.trim(),cat=document.getElementById('pCat').value,price=Number(document.getElementById('pPrice').value),desc=document.getElementById('pDesc').value.trim(),image=document.getElementById('pImage').files[0],file=document.getElementById('pFile').files[0],link=document.getElementById('pLink').value.trim(),icon=document.getElementById('pEmoji').value.trim()||'📦';
-if(!name||!price||!desc||!file)return alert('Name, price, description and digital file are required.');
-if(link&&!/^https?:\/\/([\\w-]+\\.)*flipkart\\.com/i.test(link))return alert('Enter a valid Flipkart URL.');
-let id=Date.now(),fr=new FileReader();
-fr.onload=()=>{let data=fr.result;let finish=img=>{let key='digitalkart_file_'+id;try{localStorage.setItem(key,data);products.unshift({id,name,cat,price,desc,icon,image:img||'',link,fileKey:key,fileName:file.name});save();closeModal('sellerModal');renderProducts()}catch(e){alert('File is too large for browser storage.')}};if(image){let ir=new FileReader();ir.onload=()=>finish(ir.result);ir.readAsDataURL(image)}else finish('')};
-fr.readAsDataURL(file);
-}
+            <!-- Content Windows Viewports -->
+            <div class="flex-1 overflow-hidden relative">
 
-function downloadFile(id){let p=products.find(x=>x.id===id),data=p&&p.fileKey&&localStorage.getItem(p.fileKey);if(!data)return alert('File unavailable.');let a=document.createElement('a');a.href=data;a.download=p.fileName||'digital-product';a.click()}
-window.addEventListener('click',e=>{if(e.target.classList.contains('modal-bg'))e.target.style.display='none'});
-renderProducts();
-</script>
+                <!-- 1. CHAT TAB PANEL -->
+                <div id="tabContent-chat" class="absolute inset-0 flex flex-col">
+                    <!-- Messaging Grid Area -->
+                    <div id="chatMessages" class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
+                        <!-- Messages dynamically render here -->
+                    </div>
+
+                    <!-- Enhanced Rich Chat Text Input Action Toolbar -->
+                    <div class="p-4 app-card border-t border-custom">
+                        <div class="flex items-center gap-2 bg-[var(--bg-main)] border border-[var(--border)] rounded-xl px-4 py-2.5 focus-within:border-[var(--accent)] relative">
+                            
+                            <!-- Emoji Interactive Trigger Popover Container -->
+                            <button onclick="toggleEmojiPanel()" class="text-gray-400 hover:text-[var(--text-main)] transition text-lg px-1">
+                                <i class="fa-smile"></i>
+                            </button>
+                            
+                            <!-- Custom Floating Popover Emoji List Picker Markup -->
+                            <div id="emojiPanel" class="hidden absolute bottom-14 left-2 app-card p-3 rounded-xl shadow-2xl grid grid-cols-6 gap-2 z-30 border border-custom max-w-[240px]">
+                                <button onclick="insertEmoji('😀')" class="hover:scale-125 transition text-lg">😀</button>
+                                <button onclick="insertEmoji('😂')" class="hover:scale-125 transition text-lg">😂</button>
+                                <button onclick="insertEmoji('🔥')" class="hover:scale-125 transition text-lg">🔥</button>
+                                <button onclick="insertEmoji('👍')" class="hover:scale-125 transition text-lg">👍</button>
+                                <button onclick="insertEmoji('❤️')" class="hover:scale-125 transition text-lg">❤️</button>
+                                <button onclick="insertEmoji('🎉')" class="hover:scale-125 transition text-lg">🎉</button>
+                                <button onclick="insertEmoji('🚀')" class="hover:scale-125 transition text-lg">🚀</button>
+                                <button onclick="insertEmoji('✨')" class="hover:scale-125 transition text-lg">✨</button>
+                                <button onclick="insertEmoji('👀')" class="hover:scale-125 transition text-lg">👀</button>
+                                <button onclick="insertEmoji('💯')" class="hover:scale-125 transition text-lg">💯</button>
+                                <button onclick="insertEmoji('💻')" class="hover:scale-125 transition text-lg">💻</button>
+                                <button onclick="insertEmoji('🔒')" class="hover:scale-125 transition text-lg">🔒</button>
+                            </div>
+
+                            <input type="text" id="chatInput" onkeydown="if(event.key === 'Enter') sendChatMessage()" class="flex-1 bg-transparent focus:outline-none text-sm text-[var(--text-main)] placeholder-gray-500" placeholder="Type a message...">
+                            
+                            <button onclick="sendChatMessage()" class="btn-accent px-4 py-1.5 rounded-lg text-sm font-semibold transition flex items-center gap-1.5 shadow-md">
+                                <span>Send</span><i class="fa-paper-plane text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. CLOUD FILES SHARE TAB PANEL -->
+                <div id="tabContent-files" class="absolute inset-0 hidden overflow-y-auto p-6 space-y-6 custom-scrollbar">
+                    <!-- Advanced Drag and Drop File Input Form Field Panel -->
+                    <div class="border-2 border-dashed border-[var(--border)] rounded-2xl p-8 text-center hover:border-[var(--accent)] transition duration-200 cursor-pointer relative group" onclick="triggerFileSelection()">
+                        <input type="file" id="fileUniversalInput" class="hidden" onchange="handleFileUpload(event)">
+                        <div class="space-y-3">
+                            <div class="w-14 h-14 bg-indigo-500/10 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition duration-200">
+                                <i class="fa-cloud-arrow-up text-2xl text-[var(--accent)]"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold">Click to select files & pictures to store</p>
+                                <p class="text-xs text-muted-custom mt-1">Supports images, pdf, archives up to standard browser local storage quota</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Files Dynamic Interactive View List Data Rows Content grid system -->
+                    <div>
+                        <h3 class="text-base font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-folder-open text-[var(--accent)]"></i>Shared Assets Repository
+                        </h3>
+                        <div id="filesGridList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Injected rows layout modules populate asynchronously here via script engine -->
+                        </div>
+                        <div id="noFilesPlaceholder" class="text-center py-12 text-muted-custom hidden">
+                            <i class="fa-file-circle-xmark text-4xl mb-3 opacity-40"></i>
+                            <p class="text-sm">No files uploaded yet. Drag & drop files above.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. LOCAL CENTRAL CONFIG SETTINGS TAB SYSTEM MODAL -->
+                <div id="tabContent-settings" class="absolute inset-0 hidden overflow-y-auto p-6 space-y-6 custom-scrollbar">
+                    
+                    <!-- Visual Themes Settings Card Module -->
+                    <div class="app-card rounded-2xl p-6 space-y-4">
+                        <div>
+                            <h3 class="text-lg font-bold flex items-center gap-2"><i class="fa-palette text-indigo-400"></i>Visual Theme Customization Engine</h3>
+                            <p class="text-xs text-muted-custom mt-0.5">Switch themes instantly without reloading.</p>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2">
+                            <button onclick="applyVisualThemeEngine('theme-dark')" class="border border-custom p-3 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-gray-500/5 transition">
+                                <span class="w-6 h-6 rounded-full bg-slate-900 border border-gray-600"></span>
+                                <span class="text-xs font-medium">Deep Dark</span>
+                            </button>
+                            <button onclick="applyVisualThemeEngine('theme-cyberpunk')" class="border border-custom p-3 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-gray-500/5 transition">
+                                <span class="w-6 h-6 rounded-full bg-fuchsia-950 border border-pink-500"></span>
+                                <span class="text-xs font-medium">Cyberpunk</span>
+                            </button>
+                            <button onclick="applyVisualThemeEngine('theme-ocean')" class="border border-custom p-3 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-gray-500/5 transition">
+                                <span class="w-6 h-6 rounded-full bg-blue-950 border border-cyan-400"></span>
+                                <span class="text-xs font-medium">Ocean Breeze</span>
+                            </button>
+                            <button onclick="applyVisualThemeEngine('theme-light')" class="border border-custom p-3 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-gray-500/5 transition">
+                                <span class="w-6 h-6 rounded-full bg-slate-100 border border-slate-300"></span>
+                                <span class="text-xs font-medium">Classic Light</span>
+                            </button>
+                            <button onclick="applyVisualThemeEngine('theme-glass')" class="border border-custom p-3 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-gray-500/5 transition">
+                                <span class="w-6 h-6 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border border-emerald-400"></span>
+                                <span class="text-xs font-medium">Frosted Glass</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Security Access Log & Device Diagnostics Information (Advanced Feature V4) -->
+                    <div class="app-card rounded-2xl p-6 space-y-4">
+                        <h3 class="text-lg font-bold flex items-center gap-2"><i class="fa-chart-pie text-emerald-400"></i>Storage Metrics & Portal Diagnostics</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="bg-[var(--bg-main)] p-4 rounded-xl border border-custom">
+                                <div class="text-xs text-muted-custom font-medium">Active Total Messages</div>
+                                <div id="diagMessageCount" class="text-xl font-bold mt-1 text-[var(--accent)]">0</div>
+                            </div>
+                            <div class="bg-[var(--bg-main)] p-4 rounded-xl border border-custom">
+                                <div class="text-xs text-muted-custom font-medium">Total Files Retained</div>
+                                <div id="diagFileCount" class="text-xl font-bold mt-1 text-[var(--accent)]">0</div>
+                            </div>
+                            <div class="bg-[var(--bg-main)] p-4 rounded-xl border border-custom">
+                                <div class="text-xs text-muted-custom font-medium">Local Database Size</div>
+                                <div id="diagStorageSize" class="text-xl font-bold mt-1 text-[var(--accent)]">~0 KB</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Destructive Danger Zone Panel Module Container -->
+                    <div class="app-card rounded-2xl p-6 border-red-500/30 bg-red-500/5 space-y-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-red-400 flex items-center gap-2"><i class="fa-triangle-exclamation"></i>Critical Danger Isolation Zone</h3>
+                            <p class="text-xs text-muted-custom mt-0.5">Irreversible actions regarding your cryptography local sandbox platform identity data.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-3 pt-2">
+                            <button onclick="purgeEntireLocalDataSystem()" class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition shadow-md shadow-red-600/10">
+                                <i class="fa-trash-can mr-1.5"></i>Wipe All Data & Chat Logs
+                            </button>
+                            <button onclick="hardDeleteAccountComplete()" class="border border-red-500/40 hover:bg-red-500/20 text-red-400 text-xs font-semibold px-4 py-2.5 rounded-xl transition">
+                                <i class="fa-user-xmark mr-1.5"></i>Terminate Profile & Account Permanently
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ================= MODALS SECTION (ADVANCED RECOVERY & VIEWER V4) ================= -->
+    <!-- Password Recovery Forgot Modal Window -->
+    <div id="forgotModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="app-card w-full max-w-md p-6 rounded-2xl border border-custom space-y-4 shadow-2xl">
+            <h3 class="text-lg font-bold flex items-center gap-2 text-[var(--accent)]"><i class="fa-key"></i>Recover Password Access</h3>
+            <div class="space-y-3">
+                <p class="text-xs text-muted-custom">Provide the original username and answer the challenge validation question correctly to show password.</p>
+                <div>
+                    <label class="block text-xs font-medium mb-1">Confirm Username</label>
+                    <input type="text" id="recoverUsername" class="w-full bg-[var(--bg-main)] border border-[var(--border)] rounded-xl py-2 px-3 text-sm focus:outline-none focus:border-[var(--accent)] text-[var(--text-main)]">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium mb-1">Security Question Challenge</label>
+                    <div id="recoverQuestionLabel" class="text-sm font-semibold bg-[var(--bg-main)] p-2 rounded-xl border border-custom text-indigo-300">Enter your username to search question</div>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium mb-1">Your Challenge Answer</label>
+                    <input type="text" id="recoverAnswer" class="w-full bg-[var(--bg-main)] border border-[var(--border)] rounded-xl py-2 px-3 text-sm focus:outline-none focus:border-[var(--accent)] text-[var(--text-main)]">
+                </div>
+            </div>
+            <div class="flex gap-2 justify-end pt-2">
+                <button onclick="closeForgotPasswordModal()" class="px-4 py-2 bg-gray-500/10 hover:bg-gray-500/20 rounded-xl text-xs font-semibold transition">Cancel</button>
+                <button onclick="processVerifySecurityChallenge()" class="btn-accent px-4 py-2 rounded-xl text-xs font-semibold transition">Verify Answer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Media Full Screen Picture Lightbox Modal -->
+    <div id="lightboxModal" class="hidden fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex flex-col items-center justify-center p-4" onclick="closeImageLightbox()">
+        <button class="absolute top-6 right-6 text-white text-3xl hover:scale-110 transition"><i class="fa-xmark"></i></button>
+        <img id="lightboxImg" src="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+        <p id="lightboxCaption" class="text-gray-400 mt-4 text-sm font-medium tracking-wide"></p>
+    </div>
+
+    <!-- ================= ARCHITECTURAL ENGINE SCRIPT SYSTEM ================= -->
+    <script>
+        // State variables initialization
+        let database = JSON.parse(localStorage.getItem('social_hub_db')) || { users: {}, activeSession: null };
+        let activeTab = 'chat';
+        let isLoginMode = false;
+        let activeFilterKeyword = '';
+
+        // Save internal system model state instantly to browser runtime storage cache pipeline
+        function persistStorage() {
+            localStorage.setItem('social_hub_db', JSON.stringify(database));
+            refreshDiagnosticsMetrics();
+        }
+
+        // Initialize state engine on launch
+        window.addEventListener('DOMContentLoaded', () => {
+            if (database.activeSession) {
+                // Instantly auto-lock portal tab verification route boundary on app loading for protection
+                database.activeSession = null; 
+                persistStorage();
+            }
+            renderAuthUiViewState();
+            
+            // Cross-tab synchronization event architecture framework core layer hook listener
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'social_hub_db') {
+                    database = JSON.parse(e.newValue) || { users: {}, activeSession: null };
+                    if (database.activeSession) {
+                        renderAppDashboardView();
+                    } else {
+                        renderAuthUiViewState();
+                    }
+                }
+            });
+        });
+
+        // Dynamic Switching toggle views for Security login/signup forms
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            renderAuthUiViewState();
+        }
+
+        function renderAuthUiViewState() {
+            const authTitle = document.getElementById('authTitle');
+            const authSubtitle = document.getElementById('authSubtitle');
+            const authBtn = document.getElementById('authBtn');
+            const toggleBtn = document.getElementById('toggleAuthModeBtn');
+            const recoveryField = document.getElementById('recoveryField');
+            const forgotPasswordContainer = document.getElementById('forgotPasswordContainer');
+
+            document.getElementById('authForm').reset();
+
+            if (isLoginMode) {
+                authTitle.innerText = "Portal Sign In";
+                authSubtitle.innerText = "Provide credentials to unlock data environment";
+                authBtn.innerText = "Unlock Space";
+                toggleBtn.innerText = "New user? Create a secure account here";
+                recoveryField.classList.add('hidden');
+                forgotPasswordContainer.classList.remove('hidden');
+            } else {
+                authTitle.innerText = "Create Identity";
+                authSubtitle.innerText = "Establish a localized protected account hub";
+                authBtn.innerText = "Instantiate Account";
+                toggleBtn.innerText = "Already registered? Unlock portal entry here";
+                recoveryField.classList.remove('hidden');
+                forgotPasswordContainer.classList.add('hidden');
+            }
+            document.getElementById('authPage').classList.remove('hidden');
+            document.getElementById('appPage').classList.add('hidden');
+        }
+
+        // Account Auth Submission Processor Route Controller logic block
+        function handleAuth(e) {
+            e.preventDefault();
+            const username = document.getElementById('authUsername').value.trim();
+            const password = document.getElementById('authPassword').value;
+
+            if (!username || !password) return alert("Please fill out required inputs completely.");
+
+            if (isLoginMode) {
+                // Identity Authentication Routine logic pipeline
+                if (database.users[username] && database.users[username].password === password) {
+                    database.activeSession = username;
+                    persistStorage();
+                    renderAppDashboardView();
+                } else {
+                    alert("Invalid account configuration username match or critical password violation.");
+                }
+            } else {
+                // Enrollment Signup sequence route implementation
+                if (database.users[username]) return alert("Identity username token already registered inside data cluster.");
+                
+                const question = document.getElementById('securityQuestion').value;
+                const answer = document.getElementById('securityAnswer').value.trim().toLowerCase();
+                
+                if (!answer) return alert("Security token context verification answer required.");
+
+                database.users[username] = {
+                    username: username,
+                    password: password,
+                    recoveryQuestion: question,
+                    recoveryAnswer: answer,
+                    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150",
+                    chatLogs: [],
+                    files: []
+                };
+                database.activeSession = username;
+                persistStorage();
+                renderAppDashboardView();
+                alert("Account established safely. Portal operational.");
+            }
+        }
+
+        // Launch Dashboard Frame View controller engine
+        function renderAppDashboardView() {
+            if (!database.activeSession) return;
+            const currentUserObj = database.users[database.activeSession];
+
+            document.getElementById('authPage').classList.add('hidden');
+            document.getElementById('appPage').classList.remove('hidden');
+            document.getElementById('sidebarUsername').innerText = currentUserObj.username;
+
+            // Load saved customized configuration environment visual theme choice
+            if (currentUserObj.savedTheme) {
+                applyVisualThemeEngine(currentUserObj.savedTheme, false);
+            }
+
+            updateProfileImageDomElements(currentUserObj.avatar);
+            switchTab(activeTab);
+            
+            // Initialize chat stream polling sync monitoring interface logic layer loop
+            clearInterval(window.chatSyncInterval);
+            window.chatSyncInterval = setInterval(() => {
+                // Hot reloading interface refresh
+                refreshChatStreamWindowUi();
+                refreshFilesStorageGridUi();
+            }, 800);
+        }
+
+        function updateProfileImageDomElements(base64Uri) {
+            document.getElementById('userDp').src = base64Uri;
+            document.getElementById('userDpMobile').src = base64Uri;
+        }
+
+        // Switch internal viewport window workspace tabs panel controller routing logic
+        function switchTab(targetTab) {
+            activeTab = targetTab;
+            const tabs = ['chat', 'files', 'settings'];
+            
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tabBtn-${t}`);
+                const panel = document.getElementById(`tabContent-${t}`);
+                if (t === targetTab) {
+                    btn.classList.add('text-[var(--accent)]', 'bg-indigo-500/10');
+                    btn.classList.remove('text-muted-custom', 'hover:bg-gray-500/10');
+                    panel.classList.remove('hidden');
+                } else {
+                    btn.classList.remove('text-[var(--accent)]', 'bg-indigo-500/10');
+                    btn.classList.add('text-muted-custom', 'hover:bg-gray-500/10');
+                    panel.classList.add('hidden');
+                }
+            });
+
+            // Dynamically alter headers context navbar labels meta details descriptors info
+            const tabMeta = {
+                chat: { title: "Global Chat Network Room", desc: "Local multi-tab real-time sync instant encrypted conversation grid link" },
+                files: { title: "Cloud Sandbox Assets Hub", desc: "Retain pictures, documents and files inside specialized data clusters browser partitions" },
+                settings: { title: "System Configurations Framework", desc: "Adjust layout rendering themes engine models and perform diagnostics storage checks" }
+            };
+
+            document.getElementById('currentTabTitle').innerText = tabMeta[targetTab].title;
+            document.getElementById('currentTabDesc').innerText = tabMeta[targetTab].desc;
+            
+            if (targetTab === 'chat') refreshChatStreamWindowUi(true);
+            if (targetTab === 'files') refreshFilesStorageGridUi();
+            if (targetTab === 'settings') refreshDiagnosticsMetrics();
+        }
+
+        // ================= BUSINESS LOGIC: CORE PROFILE AVATAR MANAGEMENT =================
+        function triggerDpUpload() { document.getElementById('dpInput').click(); }
+        function uploadDp(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onloadend = function() {
+                const base64String = reader.result;
+                database.users[database.activeSession].avatar = base64String;
+                persistStorage();
+                updateProfileImageDomElements(base64String);
+                refreshChatStreamWindowUi();
+            }
+            reader.readAsDataURL(file);
+        }
+
+        // ================= BUSINESS LOGIC: REAL-TIME SECURE CONVERSATION ROUTINES =================
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const msgText = input.value.trim();
+            if (!msgText) return;
+
+            const user = database.users[database.activeSession];
+            const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            const newMsgObj = {
+                id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+                sender: user.username,
+                avatar: user.avatar,
+                text: msgText,
+                time: timestamp
+            };
+
+            // Compile globally to sync streams cross-references across local memory channels topology networks
+            Object.keys(database.users).forEach(uName => {
+                if (!database.users[uName].chatLogs) database.users[uName].chatLogs = [];
+                database.users[uName].chatLogs.push(newMsgObj);
+            });
+
+            persistStorage();
+            input.value = '';
+            hideEmojiPanel();
+            refreshChatStreamWindowUi(true);
+        }
+
+        function refreshChatStreamWindowUi(forceScroll = false) {
+            if (!database.activeSession || activeTab !== 'chat') return;
+            const chatContainer = document.getElementById('chatMessages');
+            const logs = database.users[database.activeSession].chatLogs || [];
+            
+            // Preserve scroll position logic metric bounds tracking layout index
+            const isNearBottom = chatContainer.scrollHeight - chatContainer.clientHeight - chatContainer.scrollTop < 120;
+
+            // Apply filtration query constraint check engine model logic rules
+            const filteredLogs = logs.filter(m => m.text.toLowerCase().includes(activeFilterKeyword.toLowerCase()) || m.sender.toLowerCase().includes(activeFilterKeyword.toLowerCase()));
+
+            let htmlString = '';
+            filteredLogs.forEach(msg => {
+                const isMe = msg.sender === database.activeSession;
+                htmlString += `
+                    <div class="flex items-start gap-3 ${isMe ? 'flex-row-reverse' : ''} group animate-fadeIn">
+                        <img src="${msg.avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150'}" class="w-9 h-9 rounded-full object-cover shadow-md shrink-0 border border-custom">
+                        <div class="max-w-[70%]">
+                            <div class="flex items-center gap-2 mb-1 ${isMe ? 'justify-end' : ''}">
+                                <span class="text-xs font-bold ${isMe ? 'text-indigo-400' : 'text-slate-300'}">${msg.sender}</span>
+                                <span class="text-[10px] text-gray-500">${msg.time}</span>
+                            </div>
+                            <div class="rounded-2xl px-4 py-2.5 text-sm shadow-md relative group ${isMe ? 'bg-[var(--accent)] text-white rounded-tr-none' : 'bg-[var(--bg-main)] border border-custom text-[var(--text-main)] rounded-tl-none'}">
+                                <p class="break-words leading-relaxed">${escapeHtmlMarkup(msg.text)}</p>
+                                
+                                <!-- Delete individual message context trigger item node anchor row structure layout logic -->
+                                <button onclick="deleteChatMessage('${msg.id}')" class="absolute -bottom-6 ${isMe ? 'right-2' : 'left-2'} hidden group-hover:block text-[10px] text-red-400 hover:underline bg-[var(--bg-card)] px-1.5 py-0.5 rounded border border-custom z-10 transition">
+                                    <i class="fa-trash-can mr-1"></i>Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (filteredLogs.length === 0) {
+                htmlString = `
+                    <div class="h-full flex flex-col items-center justify-center text-muted-custom py-24">
+                        <i class="fa-comments-ellipsis text-5xl mb-4 opacity-30"></i>
+                        <p class="text-sm font-medium">${activeFilterKeyword ? 'No messages match search sequence filters.' : 'Conversation stack cluster blank space. Send a message to wake portal sync!'}</p>
+                    </div>
+                `;
+            }
+
+            chatContainer.innerHTML = htmlString;
+            
+            if (forceScroll || (isNearBottom && filteredLogs.length > 0)) {
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+        }
+
+        function deleteChatMessage(msgId) {
+            Object.keys(database.users).forEach(uName => {
+                if (database.users[uName].chatLogs) {
+                    database.users[uName].chatLogs = database.users[uName].chatLogs.filter(m => m.id !== msgId);
+                }
+            });
+            persistStorage();
+            refreshChatStreamWindowUi();
+        }
+
+        // ================= BUSINESS LOGIC: MULTI-FORMAT MEDIA FILES RETENTION LAYER =================
+        function triggerFileSelection() { document.getElementById('fileUniversalInput').click(); }
+        
+        function handleFileUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            // Enforce quota allocation guard rail boundaries size limit rules metrics monitoring channels dashboard check
+            if (file.size > 2.5 * 1024 * 1024) return alert("System LocalStorage storage boundaries configuration cap restriction at 2.5MB per item allocation bundle asset package upload size. Compress asset files.");
+
+            const reader = new FileReader();
+            reader.onloadend = function() {
+                const fileAssetData = {
+                    id: 'file_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+                    name: file.name,
+                    size: (file.size / 1024).toFixed(1) + ' KB',
+                    type: file.type,
+                    payload: reader.result,
+                    owner: database.activeSession,
+                    timestamp: new Date().toLocaleDateString()
+                };
+
+                if (!database.users[database.activeSession].files) database.users[database.activeSession].files = [];
+                database.users[database.activeSession].files.push(fileAssetData);
+                persistStorage();
+                refreshFilesStorageGridUi();
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function refreshFilesStorageGridUi() {
+            if (!database.activeSession || activeTab !== 'files') return;
+            const grid = document.getElementById('filesGridList');
+            const placeholder = document.getElementById('noFilesPlaceholder');
+            const fileCluster = database.users[database.activeSession].files || [];
+
+            // Apply universal real-time filter search rules
+            const filteredFiles = fileCluster.filter(f => f.name.toLowerCase().includes(activeFilterKeyword.toLowerCase()));
+
+            if (filteredFiles.length === 0) {
+                grid.innerHTML = '';
+                placeholder.classList.remove('hidden');
+                return;
+            }
+            placeholder.classList.add('hidden');
+
+            let gridMarkup = '';
+            filteredFiles.forEach(file => {
+                const isImage = file.type.startsWith('image/');
+                // Choose representative design visual structural modules icon descriptors dynamically
+                let iconClass = 'fa-file-lines text-indigo-400';
+                if (file.type.includes('pdf')) iconClass = 'fa-file-pdf text-red-400';
+                if (file.type.includes('zip') || file.type.includes('rar')) iconClass = 'fa-file-zipper text-yellow-500';
+                
+                gridMarkup += `
+                    <div class="app-card rounded-xl overflow-hidden group border border-custom hover:border-[var(--accent)] transition duration-300 flex flex-col justify-between shadow-md">
+                        <!-- Upper Visual Frame Section block elements dynamic mapping components -->
+                        <div class="p-4 flex items-start gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-[var(--bg-main)] border border-custom flex items-center justify-center shrink-0">
+                                ${isImage ? `<img src="${file.payload}" onclick="openImageLightbox('${file.payload}', '${escapeHtmlMarkup(file.name)}')" class="w-full h-full object-cover rounded-xl cursor-zoom-in hover:scale-105 transition">` : `<i class="fa-solid ${iconClass} text-xl"></i>`}
+                            </div>
+                            <div class="overflow-hidden flex-1">
+                                <h4 class="font-semibold text-xs truncate text-[var(--text-main)]" title="${file.name}">${file.name}</h4>
+                                <p class="text-[10px] text-muted-custom mt-0.5">${file.size} • ${file.timestamp}</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Lower Interactive Navigation Operational Execution Commands Deck Tray Toolbar block -->
+                        <div class="px-4 py-2.5 bg-[var(--bg-main)] border-t border-custom flex items-center justify-between text-xs">
+                            <span class="text-[10px] bg-indigo-500/10 text-[var(--accent)] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider">${file.type.split('/')[1] || 'FILE'}</span>
+                            <div class="flex items-center gap-3">
+                                <a href="${file.payload}" download="${file.name}" class="text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1 transition">
+                                    <i class="fa-download text-xs"></i>Save
+                                </a>
+                                <button onclick="deleteFileAssetNode('${file.id}')" class="text-red-400 hover:text-red-300 transition">
+                                    <i class="fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = gridMarkup;
+        }
+
+        function deleteFileAssetNode(fileId) {
+            database.users[database.activeSession].files = database.users[database.activeSession].files.filter(f => f.id !== fileId);
+            persistStorage();
+            refreshFilesStorageGridUi();
+        }
+
+        // ================= BUSINESS LOGIC: SYSTEM ENGINE UNIVERSAL ADVANCED SEARCH CONFIGURATION =================
+        function handleUniversalSearch() {
+            activeFilterKeyword = document.getElementById('universalSearch').value.trim();
+            if (activeTab === 'chat') refreshChatStreamWindowUi(false);
+            if (activeTab === 'files') refreshFilesStorageGridUi();
+        }
+
+        // ================= BUSINESS LOGIC: ADVANCED LAYOUT VIEW THEMES INTERFACE ENGINE =================
+        function applyVisualThemeEngine(themeClassName, saveToProfile = true) {
+            // Remove previous sister layout class contexts structures hooks variables properties entries
+            const themeClasses = ['theme-dark', 'theme-cyberpunk', 'theme-ocean', 'theme-light', 'theme-glass'];
+            document.body.classList.remove(...themeClasses);
+            document.body.classList.add(themeClassName);
+
+            if (saveToProfile && database.activeSession) {
+                database.users[database.activeSession].savedTheme = themeClassName;
+                persistStorage();
+            }
+        }
+
+        // ================= BUSINESS LOGIC: MODAL SYSTEM PORTALS PRESETS INTERACTIVE HANDLERS =================
+        function toggleEmojiPanel() { document.getElementById('emojiPanel').classList.toggle('hidden'); }
+        function hideEmojiPanel() { document.getElementById('emojiPanel').classList.add('hidden'); }
+        function insertEmoji(emojiSymbol) {
+            const input = document.getElementById('chatInput');
+            input.value += emojiSymbol;
+            input.focus();
+        }
+
+        function openImageLightbox(imgSrc, captionText) {
+            event.stopPropagation();
+            const lb = document.getElementById('lightboxModal');
+            document.getElementById('lightboxImg').src = imgSrc;
+            document.getElementById('lightboxCaption').innerText = captionText;
+            lb.classList.remove('hidden');
+        }
+        function closeImageLightbox() { document.getElementById('lightboxModal').classList.add('hidden'); }
+
+        // Security Password Recovery Mechanism Core Module Handler Processing Methods (Advanced Feature V4)
+        function showForgotPasswordModal() {
+            document.getElementById('forgotModal').classList.remove('hidden');
+            const userInp = document.getElementById('authUsername').value.trim();
+            if (userInp) {
+                document.getElementById('recoverUsername').value = userInp;
+                triggerSearchRecoveryQuestionChallenge();
+            }
+            
+            // Hook key check dynamically to auto reveal query matching state questions parameters configuration items rules
+            document.getElementById('recoverUsername').addEventListener('input', triggerSearchRecoveryQuestionChallenge);
+        }
+
+        function closeForgotPasswordModal() {
+            document.getElementById('forgotModal').classList.add('hidden');
+            document.getElementById('recoverUsername').removeEventListener('input', triggerSearchRecoveryQuestionChallenge);
+        }
+
+        function triggerSearchRecoveryQuestionChallenge() {
+            const uName = document.getElementById('recoverUsername').value.trim();
+            const lbl = document.getElementById('recoverQuestionLabel');
+            if (database.users[uName]) {
+                const qType = database.users[uName].recoveryQuestion;
+                const mapQ = { pet: "What is the name of your first pet?", city: "In what city were you born?", school: "What was the name of your first school?" };
+                lbl.innerText = mapQ[qType] || "Identity security question metadata trace corrupted.";
+                lbl.classList.remove('text-red-400');
+                lbl.classList.add('text-green-400');
+            } else {
+                lbl.innerText = "Identity token unmatched inside cluster records.";
+                lbl.classList.remove('text-green-400');
+                lbl.classList.add('text-red-400');
+            }
+        }
+
+        function processVerifySecurityChallenge() {
+            const uName = document.getElementById('recoverUsername').value.trim();
+            const ans = document.getElementById('recoverAnswer').value.trim().toLowerCase();
+
+            if (!database.users[uName]) return alert("Invalid credential search query trace sequence targets verified missing.");
+            
+            if (database.users[uName].recoveryAnswer === ans) {
+                alert(`Security clearance verified! Account match key decrypted successfully.\n\nYour Account Secret Entry Password Code Key is:  [ ${database.users[uName].password} ]`);
+                closeForgotPasswordModal();
+            } else {
+                alert("Security challenge authorization validation failed. Challenge answer mismatch.");
+            }
+        }
+
+        // Diagnostics configuration computing analytics interface
+        function refreshDiagnosticsMetrics() {
+            if (!database.activeSession || activeTab !== 'settings') return;
+            const user = database.users[database.activeSession];
+            
+            document.getElementById('diagMessageCount').innerText = (user.chatLogs || []).length;
+            document.getElementById('diagFileCount').innerText = (user.files || []).length;
+            
+            // Raw estimate calculation metrics sizing utility pipeline logic operations bounds tracking system parameters details
+            const byteLen = encodeURIComponent(JSON.stringify(user)).length;
+            document.getElementById('diagStorageSize').innerText = (byteLen / 1024).toFixed(1) + ' KB';
+        }
+
+        // Destruction operations route controller execution logic panels actions methods
+        function logout() {
+            database.activeSession = null;
+            persistStorage();
+            renderAuthUiViewState();
+            clearInterval(window.chatSyncInterval);
+        }
+
+        function purgeEntireLocalDataSystem() {
+            if (!confirm("Are you absolutely sure you want to completely erase all active communication chat messages and files repositories records history items? This process cannot be reversed.")) return;
+            if (database.users[database.activeSession]) {
+                database.users[database.activeSession].chatLogs = [];
+                database.users[database.activeSession].files = [];
+                persistStorage();
+                alert("Data environment sanitized successfully. Memory nodes flushed.");
+                switchTab('chat');
+            }
+        }
+
+        function hardDeleteAccountComplete() {
+            if (!confirm("CRITICAL OPERATIONS DETECTED! Are you sure you want to irreversibly terminate this active configuration identity profile account cluster? All storage blocks records configurations assets matrices files will disappear forever.")) return;
+            const victim = database.activeSession;
+            logout();
+            delete database.users[victim];
+            persistStorage();
+            alert("Account identity data arrays unlinked and discarded completely from partition clusters memory maps.");
+        }
+
+        // Basic escape layer utility system protecting markup outputs strings configurations tags bounds formatting constraints blocks elements
+        function escapeHtmlMarkup(unsafeStr) {
+            return unsafeStr.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+    </script>
 </body>
 </html>
